@@ -5,6 +5,7 @@ public enum ExceptionMessage {
     PICKY_MENU_SIZE_ERROR("못 먹는 음식은 2개 이하여야 합니다."),
     PICKY_MENU_DUPLICATED_ERROR("못 먹는 음식은 중복될 수 없습니다."),
     WEEKLY_MENU_DUPLICATED_ERROR("한 주의 메뉴는 중복될 수 없습니다."),
+    COACHES_SIZE_ERROR("코치는 최소 2명 이상, 5명 이하만 함께 식사할 수 있습니다."),
     ;
 
     private final String message;
