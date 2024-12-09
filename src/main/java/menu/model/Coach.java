@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import menu.util.ExceptionMessage;
+import menu.util.MenuConfig;
 
 public class Coach {
     private final String name;
@@ -28,7 +29,7 @@ public class Coach {
         if (menus == null) {
             return;
         }
-        if (menus.size() > 2) {
+        if (menus.size() > MenuConfig.MAX_PICKY_MENU_SIZE.getValue()) {
             throw new IllegalArgumentException(ExceptionMessage.PICKY_MENU_SIZE_ERROR.getMessage());
         }
         for (String menu : menus) {
@@ -57,7 +58,8 @@ public class Coach {
     }
 
     private void validate(String name) {
-        if (name.length() < 2 || name.length() > 4) {
+        if (name.length() < MenuConfig.MIN_NAME_LENGTH.getValue()
+                || name.length() > MenuConfig.MAX_NAME_LENGTH.getValue()) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_LENGTH_ERROR.getMessage());
         }
     }

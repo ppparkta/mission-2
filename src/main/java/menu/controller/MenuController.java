@@ -33,6 +33,4 @@ public class MenuController {
 
         outputView.printMenuResult(categories, coaches);
     }
-
-
 }

@@ -17,33 +17,34 @@ public class CoachService {
     }
 
     public void addPickyMenus(Menus menus, Coaches coaches) {
-        coaches.getCoaches().stream().forEach(coach -> {
+        coaches.getCoaches().forEach(coach -> {
             inputHandler.getPickyMenus(coach, menus);
         });
     }
 
     public void pickWeeklyMenus(Menus menus, Coaches coaches, List<Category> categories) {
-        for (Coach coach : coaches.getCoaches()) {
-            pickCoachWeeklyMenu(coach, menus, categories);
-        }
-    }
-
-    private void pickCoachWeeklyMenu(Coach coach, Menus menus, List<Category> categories) {
         int week = WeekConfig.MON.getValue();
         while (week <= WeekConfig.FRI.getValue()) {
-            if (pickTodayMenu(coach, menus.getMenuByCategories(categories.get(week)))) {
-                week++;
-            }
+            pickCoachWeeklyMenu(coaches, menus.getMenuByCategories(categories.get(week)));
+            week++;
         }
     }
 
-    private boolean pickTodayMenu(Coach coach, Menu menu) {
-        String selectedMenu = menu.shuffle();
-        try {
-            coach.addWeekMenu(selectedMenu);
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
+    private void pickCoachWeeklyMenu(Coaches coaches, Menu menu) {
+        for (Coach coach : coaches.getCoaches()) {
+            pickTodayMenu(coach, menu);
+        }
+    }
+
+    private void pickTodayMenu(Coach coach, Menu menu) {
+        while (true) {
+            String selectedMenu = menu.shuffle();
+            try {
+                coach.addWeekMenu(selectedMenu);
+                return;
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
         }
     }
 }

@@ -1,13 +1,14 @@
 package menu.util;
 
-public enum WeekConfig {
-    MON(0),
-    FRI(4),
-    MAX(5),
+public enum MenuConfig {
+    FIRST(0),
+    MAX_PICKY_MENU_SIZE(2),
+    MIN_NAME_LENGTH(2),
+    MAX_NAME_LENGTH(4),
     ;
     private final int value;
 
-    WeekConfig(int value) {
+    MenuConfig(int value) {
         this.value = value;
     }
 

@@ -3,6 +3,7 @@ package menu.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import menu.util.MenuConfig;
 
 public class Menu {
     private final Category category;
@@ -42,6 +43,6 @@ public class Menu {
 
     public String shuffle() {
         List<String> shuffledFoods = Randoms.shuffle(foods);
-        return shuffledFoods.get(0);
+        return shuffledFoods.get(MenuConfig.FIRST.getValue());
     }
 }
