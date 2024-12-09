@@ -18,7 +18,7 @@ public enum Category {
         this.categoryNumber = categoryNumber;
     }
 
-    public Category pickCategory(int number) {
+    public static Category pickCategory(int number) {
         for (Category value : values()) {
             if (value.categoryNumber == number) {
                 return value;

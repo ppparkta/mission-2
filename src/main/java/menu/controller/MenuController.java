@@ -1,33 +1,38 @@
 package menu.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import menu.model.Category;
-import menu.model.Coach;
+import menu.service.CoachService;
 import menu.model.Coaches;
-import menu.model.Menu;
 import menu.model.Menus;
+import menu.service.CategoryService;
 import menu.view.OutputView;
 
 public class MenuController {
     private final InputHandler inputHandler;
     private final OutputView outputView;
+    private final CategoryService categoryService;
+    private final CoachService coachService;
 
     public MenuController() {
         this.inputHandler = new InputHandler();
         this.outputView = new OutputView();
+        this.categoryService = new CategoryService();
+        this.coachService = new CoachService(inputHandler);
     }
 
     public void run() {
         Menus menus = InitHandler.initMenus();
         Coaches coaches = inputHandler.getCoachNames();
 
-        coaches.getCoaches().stream().forEach(coach -> {
-            inputHandler.getPickyMenus(coach, menus);
-        });
+        coachService.addPickyMenus(menus, coaches);
 
-        // 메뉴 추천 로직
+        List<Category> categories = categoryService.pickCategories();
+        coachService.pickWeeklyMenus(menus, coaches, categories);
 
         // 메뉴 추천 결과 출력
+
     }
+
+
 }
