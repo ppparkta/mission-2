@@ -8,7 +8,7 @@ import menu.util.MenuConfig;
 import menu.util.WeekConfig;
 
 public class CategoryService {
-    public List<Category> pickCategories() {
+    public List<Category> pickWeeklyCategories() {
         List<Category> categories = new ArrayList<>();
         while (categories.size() < WeekConfig.MAX.getValue()) {
             Category category = Category.pickCategory(Randoms.pickNumberInRange(1, WeekConfig.MAX.getValue()));

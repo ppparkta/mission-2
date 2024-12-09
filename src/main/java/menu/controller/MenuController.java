@@ -28,7 +28,7 @@ public class MenuController {
 
         coachService.addPickyMenus(menus, coaches);
 
-        List<Category> categories = categoryService.pickCategories();
+        List<Category> categories = categoryService.pickWeeklyCategories();
         coachService.pickWeeklyMenus(menus, coaches, categories);
 
         outputView.printMenuResult(categories, coaches);
