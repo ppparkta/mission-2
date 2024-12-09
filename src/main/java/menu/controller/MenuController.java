@@ -23,6 +23,7 @@ public class MenuController {
 
     public void run() {
         Menus menus = InitHandler.initMenus();
+        outputView.printStartMessage();
         Coaches coaches = inputHandler.getCoachNames();
 
         coachService.addPickyMenus(menus, coaches);
@@ -30,8 +31,7 @@ public class MenuController {
         List<Category> categories = categoryService.pickCategories();
         coachService.pickWeeklyMenus(menus, coaches, categories);
 
-        // 메뉴 추천 결과 출력
-
+        outputView.printMenuResult(categories, coaches);
     }
 
 
