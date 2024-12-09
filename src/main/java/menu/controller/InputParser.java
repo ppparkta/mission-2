@@ -15,7 +15,7 @@ public class InputParser {
             if (notDuplicatedNames.contains(name)) {
                 throw new IllegalArgumentException(ExceptionMessage.NAME_DUPLICATED_ERROR.getMessage());
             }
-            notDuplicatedNames.add(name);
+            notDuplicatedNames.add(name.trim());
         });
         return Arrays.stream(names).toList();
     }
@@ -31,6 +31,6 @@ public class InputParser {
         if (menus.length > 2) {
             throw new IllegalArgumentException(ExceptionMessage.PICKY_MENU_SIZE_ERROR.getMessage());
         }
-        return Arrays.stream(menus).toList();
+        return Arrays.stream(menus).map(menu -> menu.trim()).toList();
     }
 }

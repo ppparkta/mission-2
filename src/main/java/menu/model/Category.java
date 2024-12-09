@@ -18,6 +18,10 @@ public enum Category {
         this.categoryNumber = categoryNumber;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public static Category pickCategory(int number) {
         for (Category value : values()) {
             if (value.categoryNumber == number) {

@@ -20,6 +20,10 @@ public class Coach {
         return name;
     }
 
+    public List<String> getWeeklyMenus() {
+        return weeklyMenus;
+    }
+
     public void addPickyMenu(List<String> menus) {
         if (menus == null) {
             return;
