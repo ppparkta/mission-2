@@ -23,7 +23,7 @@ public class MenuController {
         Coaches coaches = inputHandler.getCoachNames();
 
         coaches.getCoaches().stream().forEach(coach -> {
-            inputHandler.getPickyMenus(coach);
+            inputHandler.getPickyMenus(coach, menus);
         });
 
         // 메뉴 추천 로직

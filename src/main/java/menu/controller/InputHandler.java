@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import menu.model.Coach;
 import menu.model.Coaches;
+import menu.model.Menus;
+import menu.util.ExceptionMessage;
 import menu.view.InputView;
 
 public class InputHandler {
@@ -28,11 +30,14 @@ public class InputHandler {
         }
     }
 
-    public void getPickyMenus(Coach coach) {
+    public void getPickyMenus(Coach coach, Menus menus) {
         while (true) {
             try {
                 String inputValue = inputView.getInput(coach.getName() + "(이)가 못 먹는 메뉴를 입력해 주세요.");
                 List<String> pickyMenus = inputParser.parsePickyMenus(inputValue);
+                if (!pickyMenus.stream().anyMatch(name -> menus.contains(name))) {
+                    throw new IllegalArgumentException(ExceptionMessage.PICKY_MENU_NOT_FOUND_ERROR.getMessage());
+                }
                 coach.addPickyMenu(pickyMenus);
                 return;
             } catch (IllegalArgumentException e) {

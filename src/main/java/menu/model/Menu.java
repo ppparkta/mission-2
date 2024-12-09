@@ -22,4 +22,13 @@ public class Menu {
     public void addFood(String food) {
         foods.add(food);
     }
+
+    public boolean contains(String name) {
+        for (String food : foods) {
+            if (name.equals(food)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

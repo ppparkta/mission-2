@@ -11,4 +11,13 @@ public class Menus {
             this.menus.add(menu);
         });
     }
+
+    public boolean contains(String name) {
+        for (Menu menu : menus) {
+            if (menu.contains(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
