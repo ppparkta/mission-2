@@ -1,5 +1,6 @@
 package menu.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,7 +9,7 @@ import menu.util.ExceptionMessage;
 public class Coach {
     private final String name;
     private final Set<String> pickyMenus = new HashSet<>();
-    private final Set<String> weeklyMenus = new HashSet<>();
+    private final List<String> weeklyMenus = new ArrayList<>();
 
     public Coach(String name) {
         validate(name);
@@ -35,6 +36,12 @@ public class Coach {
     public void addWeekMenu(String menu) {
         if (weeklyMenus.contains(menu)) {
             throw new IllegalArgumentException(ExceptionMessage.WEEKLY_MENU_DUPLICATED_ERROR.getMessage());
+        }
+        if (pickyMenus.contains(menu)) {
+            throw new IllegalArgumentException(ExceptionMessage.PICKY_MENU_SELECTED_ERROR.getMessage());
+        }
+        if (weeklyMenus.size() == 5) {
+            throw new IllegalArgumentException(ExceptionMessage.WEEKLY_MENU_SIZE_ERROR.getMessage());
         }
         weeklyMenus.add(menu);
     }

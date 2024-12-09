@@ -20,4 +20,11 @@ public class Menus {
         }
         return false;
     }
+
+    public Menu getMenuByCategories(Category category) {
+        return menus.stream()
+                .filter(menu -> menu.matchingCategory(category))
+                .toList()
+                .getFirst();
+    }
 }

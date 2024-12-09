@@ -1,5 +1,6 @@
 package menu.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +31,17 @@ public class Menu {
             }
         }
         return false;
+    }
+
+    public boolean matchingCategory(Category category) {
+        if (category.name().equals(this.category.name())) {
+            return true;
+        }
+        return false;
+    }
+
+    public String shuffle() {
+        List<String> shuffledFoods = Randoms.shuffle(foods);
+        return shuffledFoods.get(0);
     }
 }
