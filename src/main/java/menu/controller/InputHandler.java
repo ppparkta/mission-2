@@ -28,9 +28,16 @@ public class InputHandler {
         }
     }
 
-    public String getPickyMenus(Coaches coaches) {
+    public void getPickyMenus(Coach coach) {
         while (true) {
-            return null;
+            try {
+                String inputValue = inputView.getInput(coach.getName() + "(이)가 못 먹는 메뉴를 입력해 주세요.");
+                List<String> pickyMenus = inputParser.parsePickyMenus(inputValue);
+                coach.addPickyMenu(pickyMenus);
+                return;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

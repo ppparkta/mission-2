@@ -16,11 +16,11 @@ public class MenuController {
     }
 
     public void run() {
-        // 이름 입력 및 코치 생성
         Coaches coaches = inputHandler.getCoachNames();
 
-        // 각 코치 별 못 먹는 메뉴 입력
-        inputHandler.getPickyMenus(coaches);
+        coaches.getCoaches().stream().forEach(coach -> {
+            inputHandler.getPickyMenus(coach);
+        });
 
         // 메뉴 추천 로직
 

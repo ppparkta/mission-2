@@ -15,6 +15,10 @@ public class Coach {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void addPickyMenu(List<String> menus) {
         if (menus == null) {
             return;
