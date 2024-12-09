@@ -1,5 +1,7 @@
 package menu.model;
 
+import menu.util.ExceptionMessage;
+
 public enum Category {
     JAPANESE("일식", 1),
     KOREAN("한식", 2),
@@ -22,5 +24,6 @@ public enum Category {
                 return value;
             }
         }
+        throw new IllegalArgumentException(ExceptionMessage.CATEGORY_NUMBER_ERROR.getMessage());
     }
 }
