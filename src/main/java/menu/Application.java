@@ -1,5 +1,6 @@
 package menu;
 
+import menu.controller.InputHandler;
 import menu.controller.MenuController;
 
 public class Application {

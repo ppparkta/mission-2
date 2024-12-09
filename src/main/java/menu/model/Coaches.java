@@ -7,7 +7,7 @@ public class Coaches {
     private final List<Coach> coaches;
 
     public Coaches(List<Coach> coaches) {
-        if (coaches.size() < 2 || coaches.size() > 5) {
+        if (coaches == null || coaches.size() < 2 || coaches.size() > 5) {
             throw new IllegalArgumentException(ExceptionMessage.COACHES_SIZE_ERROR.getMessage());
         }
         this.coaches = coaches;
